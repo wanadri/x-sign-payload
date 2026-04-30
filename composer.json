@@ -1,0 +1,55 @@
+{
+  "name": "wanadri/x-sign-payload",
+  "description": "Secure HMAC-SHA256/SHA512 payload signing and verification for PHP frameworks",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "signature",
+    "hmac",
+    "security",
+    "payload",
+    "verification",
+    "laravel",
+    "cakephp",
+    "codeigniter"
+  ],
+  "authors": [
+    {
+      "name": "wanadri",
+      "email": "wanadri93@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0",
+    "phpstan/phpstan": "^1.10",
+    "squizlabs/php_codesniffer": "^3.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Wanadri\\XSignPayload\\": "packages/php/src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Wanadri\\XSignPayload\\Tests\\": "packages/php/tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Wanadri\\XSignPayload\\Frameworks\\Laravel\\XSignPayloadServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "phpunit --configuration packages/php/phpunit.xml",
+    "analyse": "phpstan analyse packages/php/src packages/php/tests --level=8",
+    "lint": "phpcs packages/php/src packages/php/tests --standard=PSR12",
+    "lint-fix": "phpcbf packages/php/src packages/php/tests --standard=PSR12"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
