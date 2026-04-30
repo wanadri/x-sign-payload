@@ -1,0 +1,71 @@
+{
+  "name": "x-sign-payload",
+  "version": "1.0.0",
+  "description": "Secure HMAC-SHA256/SHA512 payload signing for JavaScript/TypeScript",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./axios": {
+      "import": "./dist/axios.mjs",
+      "require": "./dist/axios.js",
+      "types": "./dist/axios.d.ts"
+    },
+    "./fetch": {
+      "import": "./dist/fetch.mjs",
+      "require": "./dist/fetch.js",
+      "types": "./dist/fetch.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "signature",
+    "hmac",
+    "security",
+    "payload",
+    "verification",
+    "axios",
+    "fetch"
+  ],
+  "author": "wanadri",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wanadri/x-sign-payload.git",
+    "directory": "packages/js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "axios": "^1.6.0",
+    "eslint": "^8.50.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "peerDependencies": {
+    "axios": "^1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "axios": {
+      "optional": true
+    }
+  }
+}

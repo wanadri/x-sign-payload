@@ -1,0 +1,17 @@
+{
+  "globalDependencies": ["**/.env.*local"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".vitepress/dist/**"]
+    },
+    "test": {
+      "dependsOn": ["build"]
+    },
+    "lint": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
