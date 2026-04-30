@@ -1,5 +1,5 @@
-import type { XSignConfig } from './types';
-import { XSignClient } from './client';
+import type { XSignConfig } from "./types";
+import { XSignClient } from "./client";
 
 /**
  * Options for createXSignFetch
@@ -22,28 +22,32 @@ export function createXSignFetch(options: XSignFetchOptions) {
 
   return async function xsignFetch(
     input: string | URL,
-    init?: RequestInit
+    init?: RequestInit,
   ): Promise<Response> {
-    const url = baseUrl && typeof input === 'string' 
-      ? `${baseUrl.replace(/\/$/, '')}/${input.replace(/^\//, '')}`
-      : input;
+    const url =
+      baseUrl && typeof input === "string"
+        ? `${baseUrl.replace(/\/$/, "")}/${input.replace(/^\//, "")}`
+        : input;
 
-    const method = (init?.method || 'GET').toUpperCase();
-    
+    const method = (init?.method || "GET").toUpperCase();
+
     // Only sign POST, PUT, PATCH with body
     let signatureHeaders: Record<string, string> = {};
-    
-    if (['POST', 'PUT', 'PATCH'].includes(method) && init?.body) {
-      const body = typeof init.body === 'string' 
-        ? init.body 
-        : JSON.stringify(init.body);
-      
+
+    if (["POST", "PUT", "PATCH"].includes(method) && init?.body) {
+      const body =
+        typeof init.body === "string" ? init.body : JSON.stringify(init.body);
+
       const result = client.sign(body);
-      signatureHeaders = result.headers;
+      Object.entries(result.headers).forEach(([key, value]) => {
+        if (value !== undefined) {
+          signatureHeaders[key] = value;
+        }
+      });
     }
 
     const headers = new Headers(init?.headers);
-    
+
     // Add default headers
     Object.entries(defaultHeaders || {}).forEach(([key, value]) => {
       if (!headers.has(key)) {
@@ -69,22 +73,23 @@ export function createXSignFetch(options: XSignFetchOptions) {
 export function createSignedRequest(
   input: string | URL,
   init: RequestInit,
-  config: XSignConfig
+  config: XSignConfig,
 ): Request {
   const client = new XSignClient(config);
-  const method = (init.method || 'GET').toUpperCase();
+  const method = (init.method || "GET").toUpperCase();
 
   let headers = new Headers(init.headers);
 
-  if (['POST', 'PUT', 'PATCH'].includes(method) && init.body) {
-    const body = typeof init.body === 'string' 
-      ? init.body 
-      : JSON.stringify(init.body);
-    
+  if (["POST", "PUT", "PATCH"].includes(method) && init.body) {
+    const body =
+      typeof init.body === "string" ? init.body : JSON.stringify(init.body);
+
     const result = client.sign(body);
-    
+
     Object.entries(result.headers).forEach(([key, value]) => {
-      headers.set(key, value);
+      if (value !== undefined) {
+        headers.set(key, value);
+      }
     });
   }
 
