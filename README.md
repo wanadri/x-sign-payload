@@ -17,6 +17,7 @@
 ## Quick Start
 
 ### PHP (Laravel)
+
 ```bash
 composer require wanadri/x-sign-payload
 php artisan x-sign:install
@@ -29,32 +30,34 @@ Route::post('/webhook', [WebhookController::class, 'handle'])
 ```
 
 ### JavaScript (Node.js)
+
 ```bash
 npm install x-sign-payload
 ```
 
 ```javascript
-import { XSignClient } from 'x-sign-payload';
+import { XSignClient } from "x-sign-payload";
 
-const client = new XSignClient({ 
-  secret: process.env.X_SIGN_SECRET 
+const client = new XSignClient({
+  secret: process.env.X_SIGN_SECRET,
 });
 
-const { headers } = client.sign({ user: 'john@example.com' });
+const { headers } = client.sign({ user: "john@example.com" });
 // headers = { 'X-Signature': 'sha256=...', 'X-Timestamp': '...' }
 ```
 
 ### JavaScript (Browser)
+
 ```javascript
-import { XSignClient } from 'x-sign-payload';
+import { XSignClient } from "x-sign-payload";
 
-const client = new XSignClient({ secret: 'your-secret' });
+const client = new XSignClient({ secret: "your-secret" });
 
-const headers = await client.signAsync({ action: 'submit' });
-fetch('/api/submit', { 
-  method: 'POST', 
+const headers = await client.signAsync({ action: "submit" });
+fetch("/api/submit", {
+  method: "POST",
   headers,
-  body: JSON.stringify({ action: 'submit' })
+  body: JSON.stringify({ action: "submit" }),
 });
 ```
 
@@ -69,14 +72,14 @@ Full documentation is available at: https://wanadri.github.io/x-sign-payload/
 
 ## Supported Languages & Frameworks
 
-| Language | Framework | Status |
-|----------|-----------|--------|
-| PHP | Laravel 10+ | ✅ Available |
-| PHP | CakePHP 4+ | ✅ Available |
-| PHP | CodeIgniter 4 | ✅ Available |
-| JavaScript | Node.js / Browser | ✅ Available |
-| Python | Django / Flask | 🚧 Coming Soon |
-| Ruby | Ruby on Rails | 🚧 Coming Soon |
+| Language   | Framework         | Status         |
+| ---------- | ----------------- | -------------- |
+| PHP        | Laravel 10+       | ✅ Available   |
+| PHP        | CakePHP 4+        | ✅ Available   |
+| PHP        | CodeIgniter 4     | ✅ Available   |
+| JavaScript | Node.js / Browser | ✅ Available   |
+| Python     | Django / Flask    | 🚧 Coming Soon |
+| Ruby       | Ruby on Rails     | 🚧 Coming Soon |
 
 ## Monorepo Structure
 
@@ -106,4 +109,4 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ---
 
-Made with ❤️ by [wanadri](https://github.com/wanadri)
+Made with ❤️ by [Wan Adri](https://github.com/wanadri)
