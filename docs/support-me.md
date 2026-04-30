@@ -42,7 +42,7 @@ Areas where we need help:
 If you'd like to support the project financially, scan the QR code below:
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="/x-sign-payload/assets/images/qr-code.png" alt="Buy Me a Coffee QR Code" width="250" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+  <img src="./assets/images/qr-code.png" alt="Buy Me a Coffee QR Code" width="250" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
   <p style="margin-top: 12px; color: #666;">Scan to support the project ☕</p>
 </div>
 
@@ -54,4 +54,4 @@ Whether you star the repo, report an issue, contribute code, or buy a coffee - e
 
 ---
 
-_Made with ❤️ by [wanadri](https://github.com/wanadri)_
+_Made with ❤️ by [Wan Adri](https://github.com/wanadri)_
