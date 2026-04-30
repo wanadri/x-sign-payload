@@ -1,8 +1,6 @@
 # Middleware Implementation
 
-Learn how to protect your API routes using middleware for each supported framework.
-
----
+## Learn how to protect your API routes using middleware for each supported framework.
 
 ## PHP Frameworks
 

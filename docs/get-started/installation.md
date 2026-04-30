@@ -4,26 +4,9 @@ Choose your platform below for installation instructions.
 
 ## PHP
 
-:::tabs
-== Laravel
-
 ```bash
 composer require wanadri/x-sign-payload
 ```
-
-== CakePHP
-
-```bash
-composer require wanadri/x-sign-payload
-```
-
-== CodeIgniter 4
-
-```bash
-composer require wanadri/x-sign-payload
-```
-
-:::
 
 ## JavaScript / TypeScript
 
