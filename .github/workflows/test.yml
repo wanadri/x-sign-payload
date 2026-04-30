@@ -2,16 +2,16 @@ name: Tests
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   test-php:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['8.0', '8.1', '8.2', '8.3']
+        php-version: [ "8.1", "8.2", "8.3", "8.4" ]
 
     steps:
       - uses: actions/checkout@v4
@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 21.x]
+        node-version: [ 18.x, 20.x, 21.x ]
 
     steps:
       - uses: actions/checkout@v4
@@ -67,7 +67,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
 
       - name: Install dependencies
         run: |
@@ -96,7 +95,7 @@ jobs:
 
   cross-language-test:
     runs-on: ubuntu-latest
-    needs: [test-php, test-js]
+    needs: [ test-php, test-js ]
 
     steps:
       - uses: actions/checkout@v4
@@ -104,12 +103,12 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: "8.2"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: "20.x"
 
       - name: Install PHP dependencies
         run: |
